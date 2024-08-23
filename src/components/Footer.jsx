@@ -8,12 +8,12 @@ export default function Footer() {
     return(
         <footer className="main-footer">
             <div className="footer-logo-box">
-                <img className="footer-logo" src={Logo} alt="Be My Guest Logo" />
+                <img className="w-40 footer-logo" src={Logo} alt="Be My Guest Logo" />
             </div>
-            <div className="sub-footer">
-                <div className="footer-info-container">
+            <div className="flex flex-col">
+                <div className="flex flex-row justify-center">
                     <div className="footer-navigation">
-                        <ul className="footer-list">
+                        <ul className="text-xs md:text-sm lg:text-base footer-list">
                             <li className="footer-item"><a className="footer-link" href="#">
                                 Terms & Conditions</a>
                             </li>
@@ -28,9 +28,9 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="footer-info-container">
-                        <p className="footer-copyright">
-                            myRealtor a real estate front-end website for renting houses built by <a className="footer-link" href="https://www.github.com/Itzemmanuel" target="_blank" rel="noreferrer">Emmanuel Phanuel</a> for his own educational purposes and to show as part of his projects in his <a className="footer-link" href="#">Portfolio</a>. Copyright &copy; by Emmanuel Phanuel {currentYear}
+                <div className="flex flex-row justify-center mt-5">
+                        <p className="text-xs md:text-sm lg:text-base">
+                            Copyright &copy; {currentYear} by <a className="footer-link" href="https://www.github.com/Itzemmanuel" target="_blank" rel="noreferrer">Emmanuel Phanuel</a>, All Rights Reserved.  
                         </p>
                 </div>
             </div>
