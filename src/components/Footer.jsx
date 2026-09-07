@@ -6,6 +6,6 @@ export default function Footer() {
       <nav aria-label="Footer navigation"><Link to="/terms">Site information</Link><Link to="/privacy">Privacy</Link><Link to="/help">Help</Link><Link to="/contact">Contact us</Link></nav>
     </div>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} MyRealtor. All rights reserved.</p><p>Demo listings · Prices in USD</p></div>
-    <p className="developer-credit">Developed by <a href="https://github.com/Itzemmanuel" target="_blank" rel="noreferrer">Emmanuel Phanuel</a></p>
+    <p className="developer-credit">Developed by <a href="https://github.com/Itzemmanuell" target="_blank" rel="noreferrer">Emmanuel Phanuel</a></p>
   </div></footer>
 }
