@@ -1,40 +1,18 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { BiBed, BiBath, BiArea } from 'react-icons/bi'
-
-export default function House( {house} ) {
-
-    const {image, type, country, address, bedrooms, bathrooms, surface, price} = house;
-    
-    return(
-        <div className='bg-white shadow-1 p-5 rounded-lg rounded-tl-[90px] w-full max-w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition'>
-            <img className='mb-8' src={image} alt="" />
-            <div className='mb-4 flex gap-x-2 text-sm'>
-                <div className='bg-green-500 rounded-full text-white px-3'>{type}</div>
-                <div className='bg-cyan-500 rounded-full text-white px-3'>{country}</div>
-            </div>
-            <div className='text-lg font-semibold max-w-[260px]'>{address}</div>
-            <div className='flex gap-x-4 my-4'>
-                <div className='flex items-center text-gray-600 gap-1'>
-                    <div className='text-[20px]'>
-                        <BiBed />
-                    </div>
-                    <div>{bedrooms}</div>
-                </div>
-                <div className='flex items-center text-gray-600 gap-1'>
-                    <div className='text-[20px]'>
-                        <BiBath />
-                    </div>
-                    <div>{bathrooms}</div>
-                </div>
-                <div className='flex items-center text-gray-600 gap-1'>
-                    <div className='text-[20px]'>
-                        <BiArea />
-                    </div>
-                    <div>{surface}</div>
-                </div>
-            </div>
-            <div className='text-lg font-semibold text-cyan-600 mb-4'>{price}</div>
-        </div>
-    )
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { RiArrowRightUpLine } from 'react-icons/ri'
+import PropertyFacts from './PropertyFacts'
+import { formatPrice } from '../lib/search'
+export default function House({ house }) {
+  return <article className="property-card">
+    <Link to={'/property/' + house.id} className="card-link" aria-label={'View ' + house.name + ' in ' + house.city}>
+      <div className="card-image"><img src={house.image} alt={house.type + ' in the ' + house.name + ' sample listing'} loading="lazy" decoding="async" width="352" height="240" /><span className="sale-badge">{house.purpose === 'rent' ? 'For rent' : 'For sale'}</span></div>
+      <div className="card-body"><div className="badges"><span>{house.type}</span><span>{house.country}</span></div>
+        <h3>{house.name}</h3><p className="address">{house.address}</p>
+        <PropertyFacts house={house} />
+        <div className="card-bottom"><p className="price">{formatPrice(house.price)} <span>{house.purpose === 'rent' ? '/ month · USD' : 'USD'}</span></p><RiArrowRightUpLine aria-hidden="true" /></div>
+      </div>
+    </Link>
+  </article>
 }
+House.propTypes = { house: PropTypes.object.isRequired }

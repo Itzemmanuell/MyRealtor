@@ -1,22 +1,13 @@
+import banner from '../assets/image/House-Banner.jpg'
 import Search from './Search'
-import Img from '../assets/image/House-Banner.jpg'
-
-
 export default function Banner() {
-    return(
-        <section className='h-full max-h-[640px] mb-8 xl:mb-24'>
-            <div className='flex flex-col lg:flex-row'>
-                <div className='lg:ml-8 xl:ml-[135px] flex flex-col items-center lg:items-start text-center lg:text-left justify-center flex-1 px-4 lg:px-0'>
-                    <h1 className='tracking-wider text-4xl lg:text-[58px] font-bold leading-none mb-6'><span className='text-cyan-500 transition animate-pulse'>Find</span> Your Dream House With Us.</h1>
-                    <p className='font-medium max-w-[480px] mb-8 text-slate-500'>
-                        Join our community of renters who have found their perfect homes with myRealtor. Start your search today and unlock a world of possibilities. Your dream rental home is just a few clicks away!
-                    </p>
-                </div>
-                <div className='hidden flex-1 lg:flex justify-end items-end'>
-                    <img className='rounded-tl-3xl ' src={Img}alt="Houser-Banner"/>
-                </div>
-            </div>
-            <Search />
-        </section>
-    )
+  return <section className="hero shell" aria-labelledby="hero-title">
+    <div className="hero-grid"><div className="hero-copy">
+      <p className="eyebrow">A place to call your own</p>
+      <h1 id="hero-title"><span>Find</span> your next<br className="desktop-break" /> place to call home.</h1>
+      <p className="hero-description">Buy your first home or find your next rental. Explore the details, compare your options, and find a place that fits.</p>
+      <p className="demo-note">Explore our sample collection. These properties are demonstration listings.</p>
+    </div><div className="hero-image"><img src={banner} alt="Contemporary house surrounded by a landscaped garden" loading="eager" width="900" height="640" /></div></div>
+    <Search />
+  </section>
 }

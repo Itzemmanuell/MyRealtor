@@ -1,26 +1,25 @@
-// import components
+import { useContext } from 'react'
+import { RiSearch2Line } from 'react-icons/ri'
 import CountryDropdown from './CountryDropdown'
 import PropertyDropdown from './PropertyDropdown'
 import PriceRangeDropdown from './PriceRangeDropdown'
-
-// import icons
-import {RiSearch2Line} from 'react-icons/ri'
-import { useContext } from 'react'
-import { HouseContext } from './HouseContext'
-
+import { HouseContext } from './house-context'
 export default function Search() {
-
-    const {handleClick} = useContext(HouseContext);
-
-    return(
-        <div className='px-[30px] py-6 max-w-[1170px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-4 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg'>
-            <CountryDropdown />
-            <PropertyDropdown />
-            <PriceRangeDropdown />
-            <button onClick={
-                () => handleClick()} className='bg-cyan-700 hover:bg-cyan-600 transition w-full lg:max-w-[162px] h-16 rounded-lg flex justify-center items-center text-white text-lg'>
-                <RiSearch2Line />
-            </button>
-        </div>
-    )
+  const { handleClick, purpose, changePurpose } = useContext(HouseContext)
+  return <div className="search-wrap">
+    <fieldset className="purpose-switch"><legend className="sr-only">Buy or rent</legend>
+      {[['sale', 'Buy a home'], ['rent', 'Rent a home']].map(([value, label]) =>
+        <label key={value} className={purpose === value ? 'selected' : ''}>
+          <input type="radio" name="purpose" value={value} checked={purpose === value} onChange={() => changePurpose(value)} />{label}
+        </label>)}
+    </fieldset>
+    <form className="search-panel" aria-label="Search properties" onSubmit={(event) => {
+      event.preventDefault(); handleClick()
+      document.getElementById('listings-title')?.focus({ preventScroll: true })
+      document.getElementById('listings')?.scrollIntoView({ block: 'start' })
+    }}>
+      <CountryDropdown /><PropertyDropdown /><PriceRangeDropdown />
+      <button className="button search-button" type="submit"><RiSearch2Line aria-hidden="true" /> Search homes</button>
+    </form>
+  </div>
 }

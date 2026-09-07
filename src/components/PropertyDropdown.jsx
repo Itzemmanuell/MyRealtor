@@ -1,51 +1,11 @@
-import {useState, useContext} from "react"
-
-
-
-// import icons
-import { RiHome5Line, RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
-
-import { Menu } from '@headlessui/react'
-
-import { HouseContext } from './HouseContext'
-
+import { useContext } from 'react'
+import { HouseContext } from './house-context'
 export default function PropertyDropdown() {
-
-    const {property, setProperty, properties} = useContext(HouseContext);
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    return(
-        <Menu as='div' className='dropdown relative'>
-            <Menu.Button onClick= {() => setIsOpen(!isOpen)} className='dropdown-btn w-full text-left'>
-                <RiHome5Line className="dropdown-icon-primary" />
-                <div>
-                    <div className="text-[15px] font-medium leading-tight">
-                        {property}
-                    </div>
-                    <div className="text=[13px]">
-                        Choice of property
-                    </div>
-                </div>
-                { isOpen ? (
-                    <RiArrowUpSLine className='dropdown-icon-secondary' />
-                 ) : (
-                    <RiArrowDownSLine className='dropdown-icon-secondary' />
-                 ) 
-                }
-            </Menu.Button>
-            <Menu.Items className='dropdown-menu'>
-                {properties.map((property, index) => {
-                    return (
-                     <Menu.Item 
-                     onClick={() => setProperty(property)}
-                     className='cursor-pointer hover:text-cyan-700 transition' as='li' key={index}> 
-                        {property}
-                     </Menu.Item>   
-                    )
-                })}
-            </Menu.Items>
-
-        </Menu>
-    )
+  const { property, setProperty, properties } = useContext(HouseContext)
+  return <label className="filter-field" htmlFor="property-type">Property type
+    <select id="property-type" value={property} onChange={(event) => setProperty(event.target.value)}>
+      <option value="">All property types</option>
+      {properties.map((item) => <option key={item}>{item}</option>)}
+    </select>
+  </label>
 }

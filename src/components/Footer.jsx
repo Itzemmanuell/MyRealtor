@@ -1,39 +1,11 @@
-import Logo from "../assets/myRealtor-Logo.png"
-
+import { Link } from 'react-router-dom'
+import logo from '../assets/myRealtor-Logo.png'
 export default function Footer() {
-
-    const currentDate = new Date()
-    const currentYear = currentDate.getFullYear()
-
-    return(
-        <footer className="main-footer">
-            <div className="footer-logo-box">
-                <img className="w-40 footer-logo" src={Logo} alt="Be My Guest Logo" />
-            </div>
-            <div className="flex flex-col">
-                <div className="flex flex-row justify-center">
-                    <div className="footer-navigation">
-                        <ul className="text-xs md:text-sm lg:text-base footer-list">
-                            <li className="footer-item"><a className="footer-link" href="#">
-                                Terms & Conditions</a>
-                            </li>
-                            <li className="footer-item"><a className="footer-link" href="#">Privacy policy</a>
-                            </li>
-                            <li className="footer-item"><a className="footer-link" href="#">
-                                Help</a>
-                            </li>
-                            <li className="footer-item"><a className="footer-link" href="#">
-                                Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="flex flex-row justify-center mt-5">
-                        <p className="text-xs md:text-sm lg:text-base">
-                            Copyright &copy; {currentYear} by <a className="footer-link" href="https://www.github.com/Itzemmanuel" target="_blank" rel="noreferrer">Emmanuel Phanuel</a>, All Rights Reserved.  
-                        </p>
-                </div>
-            </div>
-        </footer>
-    )
+  return <footer className="site-footer"><div className="shell">
+    <div className="footer-top"><Link to="/" aria-label="MyRealtor home"><img src={logo} alt="MyRealtor" width="100" height="80" /></Link>
+      <nav aria-label="Footer navigation"><Link to="/terms">Site information</Link><Link to="/privacy">Privacy</Link><Link to="/help">Help</Link><Link to="/contact">Contact us</Link></nav>
+    </div>
+    <div className="footer-bottom"><p>© {new Date().getFullYear()} MyRealtor. All rights reserved.</p><p>Demo listings · Prices in USD</p></div>
+    <p className="developer-credit">Developed by <a href="https://github.com/Itzemmanuel" target="_blank" rel="noreferrer">Emmanuel Phanuel</a></p>
+  </div></footer>
 }
