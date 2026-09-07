@@ -4,6 +4,9 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import HouseContextProvider from './components/HouseContext.jsx'
 import App from './App.jsx'
 import './index.css'
+import { inject } from '@vercel/analytics'
+
+inject()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HouseContextProvider>
